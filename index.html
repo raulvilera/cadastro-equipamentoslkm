@@ -218,6 +218,15 @@ h3::after {
     background-color: #3d8b40;
 }
 
+.btn-sair {
+    background-color: var(--cinza-medio);
+    color: white;
+}
+
+.btn-sair:hover {
+    background-color: var(--cinza-escuro);
+}
+
 /* ===== TABELAS ===== */
 .calendar,
 .historico-table,
@@ -700,18 +709,23 @@ h3::after {
     <!-- Adicionar o botão para acessar a área administrativa -->
     <div style="text-align: right; margin-bottom: 10px;">
         <button class="btn btn-cadastrar" onclick="toggleAdminArea()">ÁREA ADMINISTRATIVA</button>
+        <button class="btn btn-sair" onclick="sairDoSistema()">SAIR DO SISTEMA</button>
     </div>
 
     <!-- Área de login administrativo (inicialmente visível) -->
     <div id="adminLogin" class="login-container">
         <h3>ACESSO ADMINISTRATIVO</h3>
         <div class="form-group">
-            <label for="adminEmail">E-mail Institucional:</label>
+            <label for="adminEmail">E-MAIL INSTITUCIONAL:</label>
             <input type="email" id="adminEmail" placeholder="@prof.educacao.sp.gov.br">
         </div>
         <div class="form-group">
-            <label for="adminPassword">Senha:</label>
+            <label for="adminPassword">SENHA:</label>
             <input type="password" id="adminPassword">
+        </div>
+        <div class="form-group">
+            <label for="deviceIdentification">IDENTIFICAÇÃO DO APARELHO:</label>
+            <input type="text" id="deviceIdentification" placeholder="DIGITE A IDENTIFICAÇÃO DO APARELHO">
         </div>
         <button class="btn btn-cadastrar" onclick="loginAdmin()">ACESSAR</button>
     </div>
@@ -719,9 +733,9 @@ h3::after {
     <!-- Área administrativa (inicialmente oculta) -->
     <div id="adminArea" class="admin-container">
         <div class="admin-tabs">
-            <div class="admin-tab active" onclick="openAdminTab('equipment-management')">Gerenciar Equipamentos</div>
-            <div class="admin-tab" onclick="openAdminTab('maintenance')">Manutenção/Garantia</div>
-            <div class="admin-tab" onclick="openAdminTab('reports')">Relatórios</div>
+            <div class="admin-tab active" onclick="openAdminTab('equipment-management')">GERENCIAR EQUIPAMENTOS</div>
+            <div class="admin-tab" onclick="openAdminTab('maintenance')">MANUTENÇÃO/GARANTIA</div>
+            <div class="admin-tab" onclick="openAdminTab('reports')">RELATÓRIOS</div>
         </div>
 
         <!-- Gerenciamento de Equipamentos -->
@@ -729,119 +743,119 @@ h3::after {
             <h3>CADASTRO DE EQUIPAMENTOS</h3>
             
             <div class="search-container">
-                <input type="text" id="equipmentSearch" placeholder="Pesquisar equipamentos..." onkeyup="searchEquipment()">
-                <button class="btn btn-cadastrar" onclick="showAddEquipmentForm()">+ Novo Equipamento</button>
+                <input type="text" id="equipmentSearch" placeholder="PESQUISAR EQUIPAMENTOS..." onkeyup="searchEquipment()">
+                <button class="btn btn-cadastrar" onclick="showAddEquipmentForm()">+ NOVO EQUIPAMENTO</button>
             </div>
 
             <div class="filter-container">
                 <select id="filterCategory" onchange="filterEquipment()">
-                    <option value="">Todas as categorias</option>
-                    <option value="Notebook do aluno">Notebook do aluno</option>
-                    <option value="Notebook ADM">Notebook ADM</option>
-                    <option value="Chromebooks">Chromebooks</option>
-                    <option value="Smartphone">Smartphone</option>
-                    <option value="Tablets">Tablets</option>
-                    <option value="Datashow">Datashow</option>
-                    <option value="Desktop Lenovo">Desktop Lenovo</option>
-                    <option value="Red Set">Red Set</option>
-                    <option value="Caixas de som">Caixas de som</option>
-                    <option value="Microfones">Microfones</option>
-                    <option value="Notebook Ultra">Notebook Ultra</option>
-                    <option value="Plataforma de Carregamento">Plataforma de Carregamento</option>
-                    <option value="TVs">TVs</option>
+                    <option value="">TODAS AS CATEGORIAS</option>
+                    <option value="Notebook do aluno">NOTEBOOK DO ALUNO</option>
+                    <option value="Notebook ADM">NOTEBOOK ADM</option>
+                    <option value="Chromebooks">CHROMEBOOKS</option>
+                    <option value="Smartphone">SMARTPHONE</option>
+                    <option value="Tablets">TABLETS</option>
+                    <option value="Datashow">DATASHOW</option>
+                    <option value="Desktop Lenovo">DESKTOP LENOVO</option>
+                    <option value="Red Set">RED SET</option>
+                    <option value="Caixas de som">CAIXAS DE SOM</option>
+                    <option value="Microfones">MICROFONES</option>
+                    <option value="Notebook Ultra">NOTEBOOK ULTRA</option>
+                    <option value="Plataforma de Carregamento">PLATAFORMA DE CARREGAMENTO</option>
+                    <option value="TVs">TVS</option>
                 </select>
 
                 <select id="filterLocation" onchange="filterEquipment()">
-                    <option value="">Todos os locais</option>
-                    <option value="Sala dos professores">Sala dos professores</option>
-                    <option value="Sala de informática">Sala de informática</option>
-                    <option value="Depósito 1ª andar">Depósito 1ª andar</option>
-                    <option value="Coordenação">Coordenação</option>
-                    <option value="Vice Direção">Vice Direção</option>
-                    <option value="Secretaria">Secretaria</option>
-                    <option value="Direção">Direção</option>
-                    <option value="Anfiteatro">Anfiteatro</option>
-                    <option value="Sala de aula">Sala de aula</option>
+                    <option value="">TODOS OS LOCAIS</option>
+                    <option value="Sala dos professores">SALA DOS PROFESSORES</option>
+                    <option value="Sala de informática">SALA DE INFORMÁTICA</option>
+                    <option value="Depósito 1ª andar">DEPÓSITO 1ª ANDAR</option>
+                    <option value="Coordenação">COORDENAÇÃO</option>
+                    <option value="Vice Direção">VICE DIREÇÃO</option>
+                    <option value="Secretaria">SECRETARIA</option>
+                    <option value="Direção">DIREÇÃO</option>
+                    <option value="Anfiteatro">ANFITEATRO</option>
+                    <option value="Sala de aula">SALA DE AULA</option>
                 </select>
 
                 <select id="filterStatus" onchange="filterEquipment()">
-                    <option value="">Todos os status</option>
-                    <option value="Disponível">Disponível</option>
-                    <option value="Em uso">Em uso</option>
-                    <option value="Manutenção">Manutenção</option>
-                    <option value="Indisponível">Indisponível</option>
+                    <option value="">TODOS OS STATUS</option>
+                    <option value="Disponível">DISPONÍVEL</option>
+                    <option value="Em uso">EM USO</option>
+                    <option value="Manutenção">MANUTENÇÃO</option>
+                    <option value="Indisponível">INDISPONÍVEL</option>
                 </select>
             </div>
 
             <div id="addEquipmentForm" style="display: none;">
                 <div class="equipment-form">
                     <div class="form-group">
-                        <label>Patrimônio:</label>
+                        <label>PATRIMÔNIO:</label>
                         <input type="text" id="equipmentId">
                     </div>
                     <div class="form-group">
-                        <label>Categoria:</label>
+                        <label>CATEGORIA:</label>
                         <select id="equipmentCategory">
-                            <option value="Notebook do aluno">Notebook do aluno</option>
-                            <option value="Notebook ADM">Notebook ADM</option>
-                            <option value="Chromebooks">Chromebooks</option>
-                            <option value="Smartphone">Smartphone</option>
-                            <option value="Tablets">Tablets</option>
-                            <option value="Datashow">Datashow</option>
-                            <option value="Desktop Lenovo">Desktop Lenovo</option>
-                            <option value="Red Set">Red Set</option>
-                            <option value="Caixas de som">Caixas de som</option>
-                            <option value="Microfones">Microfones</option>
-                            <option value="Notebook Ultra">Notebook Ultra</option>
-                            <option value="Plataforma de Carregamento">Plataforma de Carregamento</option>
-                            <option value="TVs">TVs</option>
+                            <option value="Notebook do aluno">NOTEBOOK DO ALUNO</option>
+                            <option value="Notebook ADM">NOTEBOOK ADM</option>
+                            <option value="Chromebooks">CHROMEBOOKS</option>
+                            <option value="Smartphone">SMARTPHONE</option>
+                            <option value="Tablets">TABLETS</option>
+                            <option value="Datashow">DATASHOW</option>
+                            <option value="Desktop Lenovo">DESKTOP LENOVO</option>
+                            <option value="Red Set">RED SET</option>
+                            <option value="Caixas de som">CAIXAS DE SOM</option>
+                            <option value="Microfones">MICROFONES</option>
+                            <option value="Notebook Ultra">NOTEBOOK ULTRA</option>
+                            <option value="Plataforma de Carregamento">PLATAFORMA DE CARREGAMENTO</option>
+                            <option value="TVs">TVS</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Marca:</label>
+                        <label>MARCA:</label>
                         <input type="text" id="equipmentBrand">
                     </div>
                     <div class="form-group">
-                        <label>Modelo:</label>
+                        <label>MODELO:</label>
                         <input type="text" id="equipmentModel">
                     </div>
                     <div class="form-group">
-                        <label>Localização:</label>
+                        <label>LOCALIZAÇÃO:</label>
                         <select id="equipmentLocation">
-                            <option value="Sala dos professores">Sala dos professores</option>
-                            <option value="Sala de informática">Sala de informática</option>
-                            <option value="Depósito 1ª andar">Depósito 1ª andar</option>
-                            <option value="Coordenação">Coordenação</option>
-                            <option value="Vice Direção">Vice Direção</option>
-                            <option value="Secretaria">Secretaria</option>
-                            <option value="Direção">Direção</option>
-                            <option value="Anfiteatro">Anfiteatro</option>
-                            <option value="Sala de aula">Sala de aula</option>
+                            <option value="Sala dos professores">SALA DOS PROFESSORES</option>
+                            <option value="Sala de informática">SALA DE INFORMÁTICA</option>
+                            <option value="Depósito 1ª andar">DEPÓSITO 1ª ANDAR</option>
+                            <option value="Coordenação">COORDENAÇÃO</option>
+                            <option value="Vice Direção">VICE DIREÇÃO</option>
+                            <option value="Secretaria">SECRETARIA</option>
+                            <option value="Direção">DIREÇÃO</option>
+                            <option value="Anfiteatro">ANFITEATRO</option>
+                            <option value="Sala de aula">SALA DE AULA</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Status:</label>
+                        <label>STATUS:</label>
                         <select id="equipmentStatus">
-                            <option value="Disponível">Disponível</option>
-                            <option value="Em uso">Em uso</option>
-                            <option value="Manutenção">Manutenção</option>
-                            <option value="Indisponível">Indisponível</option>
+                            <option value="Disponível">DISPONÍVEL</option>
+                            <option value="Em uso">EM USO</option>
+                            <option value="Manutenção">MANUTENÇÃO</option>
+                            <option value="Indisponível">INDISPONÍVEL</option>
                         </select>
                     </div>
                     <div class="form-group full-width">
-                        <label>Observações:</label>
+                        <label>OBSERVAÇÕES:</label>
                         <textarea id="equipmentNotes" rows="3" style="width: 100%; padding: 10px; border: 2px solid var(--branco-brilhante); border-radius: 8px;"></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Número de Série:</label>
+                        <label>NÚMERO DE SÉRIE:</label>
                         <input type="text" id="equipmentSerial">
                     </div>
                     <div class="form-group">
-                        <label>Data de Aquisição:</label>
+                        <label>DATA DE AQUISIÇÃO:</label>
                         <input type="date" id="equipmentPurchaseDate">
                     </div>
                     <div class="form-group">
-                        <label>Garantia até:</label>
+                        <label>GARANTIA ATÉ:</label>
                         <input type="date" id="equipmentWarranty">
                     </div>
                     <div class="form-group full-width">
@@ -856,12 +870,12 @@ h3::after {
             <table class="equipment-table" id="equipmentTable">
                 <thead>
                     <tr>
-                        <th>Patrimônio</th>
-                        <th>Categoria</th>
-                        <th>Marca/Modelo</th>
-                        <th>Localização</th>
-                        <th>Status</th>
-                        <th>Ações</th>
+                        <th>PATRIMÔNIO</th>
+                        <th>CATEGORIA</th>
+                        <th>MARCA/MODELO</th>
+                        <th>LOCALIZAÇÃO</th>
+                        <th>STATUS</th>
+                        <th>AÇÕES</th>
                     </tr>
                 </thead>
                 <tbody id="equipmentList">
@@ -876,42 +890,42 @@ h3::after {
             
             <div class="filter-container">
                 <select id="filterMaintenanceStatus" onchange="filterMaintenance()">
-                    <option value="">Todos os status</option>
-                    <option value="Na garantia">Na garantia</option>
-                    <option value="Fora da garantia">Fora da garantia</option>
-                    <option value="Em manutenção">Em manutenção</option>
-                    <option value="Conserto concluído">Conserto concluído</option>
+                    <option value="">TODOS OS STATUS</option>
+                    <option value="Na garantia">NA GARANTIA</option>
+                    <option value="Fora da garantia">FORA DA GARANTIA</option>
+                    <option value="Em manutenção">EM MANUTENÇÃO</option>
+                    <option value="Conserto concluído">CONSERTO CONCLUÍDO</option>
                 </select>
                 
                 <select id="filterMaintenanceCategory" onchange="filterMaintenance()">
-                    <option value="">Todas as categorias</option>
-                    <option value="Notebook do aluno">Notebook do aluno</option>
-                    <option value="Notebook ADM">Notebook ADM</option>
-                    <option value="Chromebooks">Chromebooks</option>
-                    <option value="Smartphone">Smartphone</option>
-                    <option value="Tablets">Tablets</option>
-                    <option value="Datashow">Datashow</option>
-                    <option value="Desktop Lenovo">Desktop Lenovo</option>
-                    <option value="Red Set">Red Set</option>
-                    <option value="Caixas de som">Caixas de som</option>
-                    <option value="Microfones">Microfones</option>
-                    <option value="Notebook Ultra">Notebook Ultra</option>
-                    <option value="Plataforma de Carregamento">Plataforma de Carregamento</option>
-                    <option value="TVs">TVs</option>
+                    <option value="">TODAS AS CATEGORIAS</option>
+                    <option value="Notebook do aluno">NOTEBOOK DO ALUNO</option>
+                    <option value="Notebook ADM">NOTEBOOK ADM</option>
+                    <option value="Chromebooks">CHROMEBOOKS</option>
+                    <option value="Smartphone">SMARTPHONE</option>
+                    <option value="Tablets">TABLETS</option>
+                    <option value="Datashow">DATASHOW</option>
+                    <option value="Desktop Lenovo">DESKTOP LENOVO</option>
+                    <option value="Red Set">RED SET</option>
+                    <option value="Caixas de som">CAIXAS DE SOM</option>
+                    <option value="Microfones">MICROFONES</option>
+                    <option value="Notebook Ultra">NOTEBOOK ULTRA</option>
+                    <option value="Plataforma de Carregamento">PLATAFORMA DE CARREGAMENTO</option>
+                    <option value="TVs">TVS</option>
                 </select>
             </div>
 
             <table class="equipment-table" id="maintenanceTable">
                 <thead>
                     <tr>
-                        <th>Patrimônio</th>
-                        <th>Equipamento</th>
-                        <th>Problema</th>
-                        <th>Data Reportado</th>
-                        <th>Status Garantia</th>
-                        <th>Fabricante</th>
-                        <th>Previsão</th>
-                        <th>Ações</th>
+                        <th>PATRIMÔNIO</th>
+                        <th>EQUIPAMENTO</th>
+                        <th>PROBLEMA</th>
+                        <th>DATA REPORTADO</th>
+                        <th>STATUS GARANTIA</th>
+                        <th>FABRICANTE</th>
+                        <th>PREVISÃO</th>
+                        <th>AÇÕES</th>
                     </tr>
                 </thead>
                 <tbody id="maintenanceList">
@@ -923,44 +937,44 @@ h3::after {
                 <h4>REGISTRAR MANUTENÇÃO</h4>
                 <div class="equipment-form">
                     <div class="form-group">
-                        <label>Equipamento:</label>
+                        <label>EQUIPAMENTO:</label>
                         <input type="text" id="maintenanceEquipment" readonly>
                     </div>
                     <div class="form-group">
-                        <label>Problema:</label>
+                        <label>PROBLEMA:</label>
                         <select id="maintenanceProblem">
-                            <option value="Hardware">Problema de Hardware</option>
-                            <option value="Software">Problema de Software</option>
-                            <option value="Elétrico">Problema Elétrico</option>
-                            <option value="Físico">Danos Físicos</option>
-                            <option value="Outro">Outro</option>
+                            <option value="Hardware">PROBLEMA DE HARDWARE</option>
+                            <option value="Software">PROBLEMA DE SOFTWARE</option>
+                            <option value="Elétrico">PROBLEMA ELÉTRICO</option>
+                            <option value="Físico">DANOS FÍSICOS</option>
+                            <option value="Outro">OUTRO</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Descrição detalhada:</label>
+                        <label>DESCRIÇÃO DETALHADA:</label>
                         <textarea id="maintenanceDescription" rows="3" style="width: 100%; padding: 10px; border: 2px solid var(--branco-brilhante); border-radius: 8px;"></textarea>
                     </div>
                     <div class="form-group">
-                        <label>Status da Garantia:</label>
+                        <label>STATUS DA GARANTIA:</label>
                         <select id="maintenanceWarrantyStatus">
-                            <option value="Na garantia">Na garantia</option>
-                            <option value="Fora da garantia">Fora da garantia</option>
+                            <option value="Na garantia">NA GARANTIA</option>
+                            <option value="Fora da garantia">FORA DA GARANTIA</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <label>Fabricante/Fornecedor:</label>
+                        <label>FABRICANTE/FORNECEDOR:</label>
                         <input type="text" id="maintenanceVendor">
                     </div>
                     <div class="form-group">
-                        <label>Contato do Fornecedor:</label>
+                        <label>CONTATO DO FORNECEDOR:</label>
                         <input type="text" id="maintenanceVendorContact">
                     </div>
                     <div class="form-group">
-                        <label>Data de envio:</label>
+                        <label>DATA DE ENVIO:</label>
                         <input type="date" id="maintenanceSendDate">
                     </div>
                     <div class="form-group">
-                        <label>Previsão de retorno:</label>
+                        <label>PREVISÃO DE RETORNO:</label>
                         <input type="date" id="maintenanceReturnDate">
                     </div>
                     <div class="form-group full-width">
@@ -979,36 +993,36 @@ h3::after {
             
             <div class="filter-container">
                 <select id="reportType" onchange="updateReportFilters()">
-                    <option value="inventory">Inventário Geral</option>
-                    <option value="status">Status dos Equipamentos</option>
-                    <option value="maintenance">Histórico de Manutenções</option>
-                    <option value="warranty">Equipamentos na Garantia</option>
-                    <option value="movement">Movimentação de Equipamentos</option>
+                    <option value="inventory">INVENTÁRIO GERAL</option>
+                    <option value="status">STATUS DOS EQUIPAMENTOS</option>
+                    <option value="maintenance">HISTÓRICO DE MANUTENÇÕES</option>
+                    <option value="warranty">EQUIPAMENTOS NA GARANTIA</option>
+                    <option value="movement">MOVIMENTAÇÃO DE EQUIPAMENTOS</option>
                 </select>
                 
                 <select id="reportCategory" onchange="generateReport()">
-                    <option value="">Todas as categorias</option>
-                    <option value="Notebook do aluno">Notebook do aluno</option>
-                    <option value="Notebook ADM">Notebook ADM</option>
-                    <option value="Chromebooks">Chromebooks</option>
-                    <option value="Smartphone">Smartphone</option>
-                    <option value="Tablets">Tablets</option>
-                    <option value="Datashow">Datashow</option>
-                    <option value="Desktop Lenovo">Desktop Lenovo</option>
-                    <option value="Red Set">Red Set</option>
-                    <option value="Caixas de som">Caixas de som</option>
-                    <option value="Microfones">Microfones</option>
-                    <option value="Notebook Ultra">Notebook Ultra</option>
-                    <option value="Plataforma de Carregamento">Plataforma de Carregamento</option>
-                    <option value="TVs">TVs</option>
+                    <option value="">TODAS AS CATEGORIAS</option>
+                    <option value="Notebook do aluno">NOTEBOOK DO ALUNO</option>
+                    <option value="Notebook ADM">NOTEBOOK ADM</option>
+                    <option value="Chromebooks">CHROMEBOOKS</option>
+                    <option value="Smartphone">SMARTPHONE</option>
+                    <option value="Tablets">TABLETS</option>
+                    <option value="Datashow">DATASHOW</option>
+                    <option value="Desktop Lenovo">DESKTOP LENOVO</option>
+                    <option value="Red Set">RED SET</option>
+                    <option value="Caixas de som">CAIXAS DE SOM</option>
+                    <option value="Microfones">MICROFONES</option>
+                    <option value="Notebook Ultra">NOTEBOOK ULTRA</option>
+                    <option value="Plataforma de Carregamento">PLATAFORMA DE CARREGAMENTO</option>
+                    <option value="TVs">TVS</option>
                 </select>
                 
                 <select id="reportPeriod" onchange="generateReport()">
-                    <option value="all">Todo o período</option>
-                    <option value="month">Este mês</option>
-                    <option value="quarter">Este trimestre</option>
-                    <option value="year">Este ano</option>
-                    <option value="custom">Personalizado</option>
+                    <option value="all">TODO O PERÍODO</option>
+                    <option value="month">ESTE MÊS</option>
+                    <option value="quarter">ESTE TRIMESTRE</option>
+                    <option value="year">ESTE ANO</option>
+                    <option value="custom">PERSONALIZADO</option>
                 </select>
                 
                 <div id="customDateRange" style="display: none;">
@@ -1025,7 +1039,7 @@ h3::after {
             
             <div id="reportResults">
                 <!-- Resultados do relatório serão exibidos aqui -->
-                <p>Selecione os filtros e clique em "Gerar Relatório" para visualizar os dados.</p>
+                <p>SELECIONE OS FILTROS E CLIQUE EM "GERAR RELATÓRIO" PARA VISUALIZAR OS DADOS.</p>
             </div>
         </div>
     </div>
@@ -1034,6 +1048,7 @@ h3::after {
         // Constantes para armazenamento local
         const EQUIPMENT_STORAGE_KEY = 'equipamentos_escola';
         const MAINTENANCE_STORAGE_KEY = 'manutencoes_equipamentos';
+        const DEVICE_ID_KEY = 'device_identification';
         
         // Carrega equipamentos do localStorage ou inicializa vazio
         let equipamentos = JSON.parse(localStorage.getItem(EQUIPMENT_STORAGE_KEY)) || [];
@@ -1063,19 +1078,39 @@ h3::after {
             }
         }
         
+        // Função para sair do sistema
+        function sairDoSistema() {
+            isAdminLoggedIn = false;
+            localStorage.removeItem('admin_logged_in');
+            document.getElementById('adminLogin').style.display = 'block';
+            document.getElementById('adminArea').style.display = 'none';
+            document.getElementById('adminEmail').value = '';
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('deviceIdentification').value = '';
+            alert('VOCÊ SAIU DO SISTEMA COM SUCESSO!');
+        }
+        
         // Função de login administrativo
         function loginAdmin() {
             const email = document.getElementById('adminEmail').value;
             const password = document.getElementById('adminPassword').value;
+            const deviceId = document.getElementById('deviceIdentification').value;
+            
+            if (!deviceId) {
+                alert('POR FAVOR, INSIRA A IDENTIFICAÇÃO DO APARELHO!');
+                return;
+            }
             
             if (email.endsWith('@prof.educacao.sp.gov.br') && password === 'Proati@Lydia') {
                 isAdminLoggedIn = true;
+                localStorage.setItem('admin_logged_in', 'true');
+                localStorage.setItem(DEVICE_ID_KEY, deviceId);
                 document.getElementById('adminLogin').style.display = 'none';
                 document.getElementById('adminArea').style.display = 'block';
                 loadEquipmentList();
                 loadMaintenanceList();
             } else {
-                alert('Credenciais inválidas. Apenas e-mails institucionais e a senha correta podem acessar esta área.');
+                alert('CREDENCIAIS INVÁLIDAS. APENAS E-MAILS INSTITUCIONAIS E A SENHA CORRETA PODEM ACESSAR ESTA ÁREA.');
             }
         }
         
@@ -1121,19 +1156,19 @@ h3::after {
                 switch(equipamento.status) {
                     case 'Disponível':
                         statusClass = 'status-disponivel';
-                        statusText = 'Disponível';
+                        statusText = 'DISPONÍVEL';
                         break;
                     case 'Em uso':
                         statusClass = 'status-emuso';
-                        statusText = 'Em uso';
+                        statusText = 'EM USO';
                         break;
                     case 'Manutenção':
                         statusClass = 'status-manutencao';
-                        statusText = 'Manutenção';
+                        statusText = 'MANUTENÇÃO';
                         break;
                     case 'Indisponível':
                         statusClass = 'status-indisponivel';
-                        statusText = 'Indisponível';
+                        statusText = 'INDISPONÍVEL';
                         break;
                 }
                 
@@ -1144,11 +1179,11 @@ h3::after {
                     <td>${equipamento.localizacao}</td>
                     <td><span class="${statusClass}">${statusText}</span></td>
                     <td>
-                        <button class="btn btn-cadastrar" onclick="editEquipment('${equipamento.patrimonio}')">Editar</button>
-                        <button class="btn btn-excluir" onclick="deleteEquipment('${equipamento.patrimonio}')">Excluir</button>
+                        <button class="btn btn-cadastrar" onclick="editEquipment('${equipamento.patrimonio}')">EDITAR</button>
+                        <button class="btn btn-excluir" onclick="deleteEquipment('${equipamento.patrimonio}')">EXCLUIR</button>
                         ${equipamento.status !== 'Manutenção' ? 
-                          `<button class="btn btn-limpar" onclick="reportMaintenance('${equipamento.patrimonio}')">Manutenção</button>` : 
-                          `<button class="btn btn-entregar" onclick="completeMaintenance('${equipamento.patrimonio}')">Concluir</button>`}
+                          `<button class="btn btn-limpar" onclick="reportMaintenance('${equipamento.patrimonio}')">MANUTENÇÃO</button>` : 
+                          `<button class="btn btn-entregar" onclick="completeMaintenance('${equipamento.patrimonio}')">CONCLUIR</button>`}
                     </td>
                 `;
                 
@@ -1174,9 +1209,9 @@ h3::after {
                     <td>${manutencao.fabricante || ''}</td>
                     <td>${manutencao.previsaoRetorno || ''}</td>
                     <td>
-                        <button class="btn btn-cadastrar" onclick="viewMaintenanceDetails('${manutencao.id}')">Detalhes</button>
+                        <button class="btn btn-cadastrar" onclick="viewMaintenanceDetails('${manutencao.id}')">DETALHES</button>
                         ${manutencao.status !== 'Concluído' ? 
-                          `<button class="btn btn-entregar" onclick="completeMaintenance('${manutencao.equipamentoId}')">Concluir</button>` : ''}
+                          `<button class="btn btn-entregar" onclick="completeMaintenance('${manutencao.equipamentoId}')">CONCLUIR</button>` : ''}
                     </td>
                 `;
                 
@@ -1207,19 +1242,19 @@ h3::after {
                 switch(equipamento.status) {
                     case 'Disponível':
                         statusClass = 'status-disponivel';
-                        statusText = 'Disponível';
+                        statusText = 'DISPONÍVEL';
                         break;
                     case 'Em uso':
                         statusClass = 'status-emuso';
-                        statusText = 'Em uso';
+                        statusText = 'EM USO';
                         break;
                     case 'Manutenção':
                         statusClass = 'status-manutencao';
-                        statusText = 'Manutenção';
+                        statusText = 'MANUTENÇÃO';
                         break;
                     case 'Indisponível':
                         statusClass = 'status-indisponivel';
-                        statusText = 'Indisponível';
+                        statusText = 'INDISPONÍVEL';
                         break;
                 }
                 
@@ -1230,11 +1265,11 @@ h3::after {
                     <td>${equipamento.localizacao}</td>
                     <td><span class="${statusClass}">${statusText}</span></td>
                     <td>
-                        <button class="btn btn-cadastrar" onclick="editEquipment('${equipamento.patrimonio}')">Editar</button>
-                        <button class="btn btn-excluir" onclick="deleteEquipment('${equipamento.patrimonio}')">Excluir</button>
+                        <button class="btn btn-cadastrar" onclick="editEquipment('${equipamento.patrimonio}')">EDITAR</button>
+                        <button class="btn btn-excluir" onclick="deleteEquipment('${equipamento.patrimonio}')">EXCLUIR</button>
                         ${equipamento.status !== 'Manutenção' ? 
-                          `<button class="btn btn-limpar" onclick="reportMaintenance('${equipamento.patrimonio}')">Manutenção</button>` : 
-                          `<button class="btn btn-entregar" onclick="completeMaintenance('${equipamento.patrimonio}')">Concluir</button>`}
+                          `<button class="btn btn-limpar" onclick="reportMaintenance('${equipamento.patrimonio}')">MANUTENÇÃO</button>` : 
+                          `<button class="btn btn-entregar" onclick="completeMaintenance('${equipamento.patrimonio}')">CONCLUIR</button>`}
                     </td>
                 `;
                 
@@ -1271,9 +1306,9 @@ h3::after {
                     <td>${manutencao.fabricante || ''}</td>
                     <td>${manutencao.previsaoRetorno || ''}</td>
                     <td>
-                        <button class="btn btn-cadastrar" onclick="viewMaintenanceDetails('${manutencao.id}')">Detalhes</button>
+                        <button class="btn btn-cadastrar" onclick="viewMaintenanceDetails('${manutencao.id}')">DETALHES</button>
                         ${manutencao.status !== 'Concluído' ? 
-                          `<button class="btn btn-entregar" onclick="completeMaintenance('${manutencao.equipamentoId}')">Concluir</button>` : ''}
+                          `<button class="btn btn-entregar" onclick="completeMaintenance('${manutencao.equipamentoId}')">CONCLUIR</button>` : ''}
                     </td>
                 `;
                 
@@ -1305,19 +1340,19 @@ h3::after {
                 switch(equipamento.status) {
                     case 'Disponível':
                         statusClass = 'status-disponivel';
-                        statusText = 'Disponível';
+                        statusText = 'DISPONÍVEL';
                         break;
                     case 'Em uso':
                         statusClass = 'status-emuso';
-                        statusText = 'Em uso';
+                        statusText = 'EM USO';
                         break;
                     case 'Manutenção':
                         statusClass = 'status-manutencao';
-                        statusText = 'Manutenção';
+                        statusText = 'MANUTENÇÃO';
                         break;
                     case 'Indisponível':
                         statusClass = 'status-indisponivel';
-                        statusText = 'Indisponível';
+                        statusText = 'INDISPONÍVEL';
                         break;
                 }
                 
@@ -1328,11 +1363,11 @@ h3::after {
                     <td>${equipamento.localizacao}</td>
                     <td><span class="${statusClass}">${statusText}</span></td>
                     <td>
-                        <button class="btn btn-cadastrar" onclick="editEquipment('${equipamento.patrimonio}')">Editar</button>
-                        <button class="btn btn-excluir" onclick="deleteEquipment('${equipamento.patrimonio}')">Excluir</button>
+                        <button class="btn btn-cadastrar" onclick="editEquipment('${equipamento.patrimonio}')">EDITAR</button>
+                        <button class="btn btn-excluir" onclick="deleteEquipment('${equipamento.patrimonio}')">EXCLUIR</button>
                         ${equipamento.status !== 'Manutenção' ? 
-                          `<button class="btn btn-limpar" onclick="reportMaintenance('${equipamento.patrimonio}')">Manutenção</button>` : 
-                          `<button class="btn btn-entregar" onclick="completeMaintenance('${equipamento.patrimonio}')">Concluir</button>`}
+                          `<button class="btn btn-limpar" onclick="reportMaintenance('${equipamento.patrimonio}')">MANUTENÇÃO</button>` : 
+                          `<button class="btn btn-entregar" onclick="completeMaintenance('${equipamento.patrimonio}')">CONCLUIR</button>`}
                     </td>
                 `;
                 
@@ -1391,7 +1426,7 @@ h3::after {
             const garantia = document.getElementById('equipmentWarranty').value;
             
             if (!patrimonio || !categoria || !marca || !modelo || !localizacao || !status) {
-                alert('Preencha todos os campos obrigatórios!');
+                alert('PREENCHA TODOS OS CAMPOS OBRIGATÓRIOS!');
                 return;
             }
             
@@ -1429,7 +1464,7 @@ h3::after {
             loadEquipmentList();
             cancelAddEquipment();
             
-            alert('Equipamento salvo com sucesso!');
+            alert('EQUIPAMENTO SALVO COM SUCESSO!');
         }
         
         // Função para cancelar a adição/edição de equipamento
@@ -1440,13 +1475,13 @@ h3::after {
         
         // Função para excluir um equipamento
         function deleteEquipment(patrimonio) {
-            if (!confirm('Tem certeza que deseja excluir este equipamento?')) return;
+            if (!confirm('TEM CERTEZA QUE DESEJA EXCLUIR ESTE EQUIPAMENTO?')) return;
             
             equipamentos = equipamentos.filter(e => e.patrimonio !== patrimonio);
             salvarEquipamentos();
             loadEquipmentList();
             
-            alert('Equipamento excluído com sucesso!');
+            alert('EQUIPAMENTO EXCLUÍDO COM SUCESSO!');
         }
         
         // Função para reportar manutenção de um equipamento
@@ -1501,7 +1536,7 @@ h3::after {
             const previsaoRetorno = document.getElementById('maintenanceReturnDate').value;
             
             if (!problema) {
-                alert('Informe o tipo de problema!');
+                alert('INFORME O TIPO DE PROBLEMA!');
                 return;
             }
             
@@ -1544,7 +1579,7 @@ h3::after {
             loadMaintenanceList();
             cancelMaintenance();
             
-            alert('Manutenção registrada com sucesso!');
+            alert('MANUTENÇÃO REGISTRADA COM SUCESSO!');
         }
         
         // Função para concluir uma manutenção
@@ -1564,7 +1599,7 @@ h3::after {
             loadEquipmentList();
             loadMaintenanceList();
             
-            alert('Manutenção concluída e equipamento marcado como disponível!');
+            alert('MANUTENÇÃO CONCLUÍDA E EQUIPAMENTO MARCADO COMO DISPONÍVEL!');
         }
         
         // Função para cancelar o registro de manutenção
@@ -1596,17 +1631,17 @@ h3::after {
             
             switch(reportType) {
                 case 'inventory':
-                    reportTitle = 'Inventário Geral de Equipamentos';
+                    reportTitle = 'INVENTÁRIO GERAL DE EQUIPAMENTOS';
                     reportData = equipamentos.filter(e => !category || e.categoria === category);
                     break;
                     
                 case 'status':
-                    reportTitle = 'Status dos Equipamentos';
+                    reportTitle = 'STATUS DOS EQUIPAMENTOS';
                     reportData = equipamentos.filter(e => !category || e.categoria === category);
                     break;
                     
                 case 'maintenance':
-                    reportTitle = 'Histórico de Manutenções';
+                    reportTitle = 'HISTÓRICO DE MANUTENÇÕES';
                     reportData = manutencoes.filter(m => {
                         const equipamento = equipamentos.find(e => e.patrimonio === m.equipamentoId) || {};
                         return (!category || equipamento.categoria === category);
@@ -1614,7 +1649,7 @@ h3::after {
                     break;
                     
                 case 'warranty':
-                    reportTitle = 'Equipamentos na Garantia';
+                    reportTitle = 'EQUIPAMENTOS NA GARANTIA';
                     reportData = equipamentos.filter(e => {
                         return (!category || e.categoria === category) && 
                                e.garantia && new Date(e.garantia) > new Date();
@@ -1622,7 +1657,7 @@ h3::after {
                     break;
                     
                 case 'movement':
-                    reportTitle = 'Movimentação de Equipamentos';
+                    reportTitle = 'MOVIMENTAÇÃO DE EQUIPAMENTOS';
                     // Implementar lógica de movimentação se necessário
                     break;
             }
@@ -1672,7 +1707,7 @@ h3::after {
             const reportResults = document.getElementById('reportResults');
             
             if (reportData.length === 0) {
-                reportResults.innerHTML = `<p>Nenhum dado encontrado para os filtros selecionados.</p>`;
+                reportResults.innerHTML = `<p>NENHUM DADO ENCONTRADO PARA OS FILTROS SELECIONADOS.</p>`;
                 return;
             }
             
@@ -1683,12 +1718,12 @@ h3::after {
                     <table class="equipment-table">
                         <thead>
                             <tr>
-                                <th>Patrimônio</th>
-                                <th>Categoria</th>
-                                <th>Marca/Modelo</th>
-                                <th>Localização</th>
-                                <th>Status</th>
-                                ${reportType === 'warranty' ? '<th>Garantia até</th>' : ''}
+                                <th>PATRIMÔNIO</th>
+                                <th>CATEGORIA</th>
+                                <th>MARCA/MODELO</th>
+                                <th>LOCALIZAÇÃO</th>
+                                <th>STATUS</th>
+                                ${reportType === 'warranty' ? '<th>GARANTIA ATÉ</th>' : ''}
                             </tr>
                         </thead>
                         <tbody>
@@ -1700,19 +1735,19 @@ h3::after {
                     switch(item.status) {
                         case 'Disponível':
                             statusClass = 'status-disponivel';
-                            statusText = 'Disponível';
+                            statusText = 'DISPONÍVEL';
                             break;
                         case 'Em uso':
                             statusClass = 'status-emuso';
-                            statusText = 'Em uso';
+                            statusText = 'EM USO';
                             break;
                         case 'Manutenção':
                             statusClass = 'status-manutencao';
-                            statusText = 'Manutenção';
+                            statusText = 'MANUTENÇÃO';
                             break;
                         case 'Indisponível':
                             statusClass = 'status-indisponivel';
-                            statusText = 'Indisponível';
+                            statusText = 'INDISPONÍVEL';
                             break;
                     }
                     
@@ -1734,13 +1769,13 @@ h3::after {
                     <table class="equipment-table">
                         <thead>
                             <tr>
-                                <th>Equipamento</th>
-                                <th>Problema</th>
-                                <th>Data Reportado</th>
-                                <th>Status Garantia</th>
-                                <th>Fabricante</th>
-                                <th>Previsão</th>
-                                <th>Status</th>
+                                <th>EQUIPAMENTO</th>
+                                <th>PROBLEMA</th>
+                                <th>DATA REPORTADO</th>
+                                <th>STATUS GARANTIA</th>
+                                <th>FABRICANTE</th>
+                                <th>PREVISÃO</th>
+                                <th>STATUS</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -1784,11 +1819,11 @@ h3::after {
             doc.text("ESCOLA ESTADUAL - NOME DA ESCOLA", 105, 30, null, null, 'center');
             
             const reportTitle = document.getElementById('reportType').options[document.getElementById('reportType').selectedIndex].text;
-            doc.text(`Tipo: ${reportTitle}`, 105, 36, null, null, 'center');
+            doc.text(`TIPO: ${reportTitle}`, 105, 36, null, null, 'center');
             
             const category = document.getElementById('reportCategory').value;
             if (category) {
-                doc.text(`Categoria: ${category}`, 105, 42, null, null, 'center');
+                doc.text(`CATEGORIA: ${category}`, 105, 42, null, null, 'center');
             }
             
             // Linha divisória
@@ -1802,7 +1837,7 @@ h3::after {
             
             switch(reportType) {
                 case 'inventory':
-                    headers = ["Patrimônio", "Categoria", "Marca/Modelo", "Localização", "Status"];
+                    headers = ["PATRIMÔNIO", "CATEGORIA", "MARCA/MODELO", "LOCALIZAÇÃO", "STATUS"];
                     
                     equipamentos.forEach(item => {
                         if (!category || item.categoria === category) {
@@ -1818,7 +1853,7 @@ h3::after {
                     break;
                     
                 case 'status':
-                    headers = ["Patrimônio", "Categoria", "Marca/Modelo", "Localização", "Status"];
+                    headers = ["PATRIMÔNIO", "CATEGORIA", "MARCA/MODELO", "LOCALIZAÇÃO", "STATUS"];
                     
                     equipamentos.forEach(item => {
                         if (!category || item.categoria === category) {
@@ -1834,7 +1869,7 @@ h3::after {
                     break;
                     
                 case 'maintenance':
-                    headers = ["Equipamento", "Problema", "Data Reportado", "Status Garantia", "Fabricante", "Previsão", "Status"];
+                    headers = ["EQUIPAMENTO", "PROBLEMA", "DATA REPORTADO", "STATUS GARANTIA", "FABRICANTE", "PREVISÃO", "STATUS"];
                     
                     manutencoes.forEach(item => {
                         const equipamento = equipamentos.find(e => e.patrimonio === item.equipamentoId) || {};
@@ -1853,7 +1888,7 @@ h3::after {
                     break;
                     
                 case 'warranty':
-                    headers = ["Patrimônio", "Categoria", "Marca/Modelo", "Localização", "Status", "Garantia até"];
+                    headers = ["PATRIMÔNIO", "CATEGORIA", "MARCA/MODELO", "LOCALIZAÇÃO", "STATUS", "GARANTIA ATÉ"];
                     
                     equipamentos.forEach(item => {
                         if ((!category || item.categoria === category) && item.garantia && new Date(item.garantia) > new Date()) {
@@ -1872,7 +1907,7 @@ h3::after {
             
             if (data.length === 0) {
                 doc.setFontSize(12);
-                doc.text("Nenhum dado encontrado para os filtros selecionados.", 105, 60, null, null, 'center');
+                doc.text("NENHUM DADO ENCONTRADO PARA OS FILTROS SELECIONADOS.", 105, 60, null, null, 'center');
             } else {
                 doc.autoTable({
                     head: [headers],
@@ -1894,7 +1929,7 @@ h3::after {
             const agora = new Date();
             doc.setFontSize(8);
             doc.setTextColor(100, 100, 100);
-            doc.text(`Relatório gerado em: ${agora.toLocaleString()}`, 105, 285, null, null, 'center');
+            doc.text(`RELATÓRIO GERADO EM: ${agora.toLocaleString()}`, 105, 285, null, null, 'center');
             
             // Salva o PDF
             const nomeArquivo = `Relatorio_${reportTitle.replace(/\s+/g, '_')}_${new Date().toISOString().split('T')[0]}.pdf`;
@@ -1912,7 +1947,7 @@ h3::after {
             
             switch(reportType) {
                 case 'inventory':
-                    headers = ["Patrimônio", "Categoria", "Marca", "Modelo", "Localização", "Status", "Número de Série", "Data de Aquisição", "Garantia até", "Observações"];
+                    headers = ["PATRIMÔNIO", "CATEGORIA", "MARCA", "MODELO", "LOCALIZAÇÃO", "STATUS", "NÚMERO DE SÉRIE", "DATA DE AQUISIÇÃO", "GARANTIA ATÉ", "OBSERVAÇÕES"];
                     
                     equipamentos.forEach(item => {
                         if (!category || item.categoria === category) {
@@ -1933,7 +1968,7 @@ h3::after {
                     break;
                     
                 case 'status':
-                    headers = ["Patrimônio", "Categoria", "Marca", "Modelo", "Localização", "Status"];
+                    headers = ["PATRIMÔNIO", "CATEGORIA", "MARCA", "MODELO", "LOCALIZAÇÃO", "STATUS"];
                     
                     equipamentos.forEach(item => {
                         if (!category || item.categoria === category) {
@@ -1950,7 +1985,7 @@ h3::after {
                     break;
                     
                 case 'maintenance':
-                    headers = ["Equipamento", "Patrimônio", "Problema", "Descrição", "Data Reportado", "Status Garantia", "Fabricante", "Contato Fornecedor", "Data Envio", "Previsão Retorno", "Status"];
+                    headers = ["EQUIPAMENTO", "PATRIMÔNIO", "PROBLEMA", "DESCRIÇÃO", "DATA REPORTADO", "STATUS GARANTIA", "FABRICANTE", "CONTATO FORNECEDOR", "DATA ENVIO", "PREVISÃO RETORNO", "STATUS"];
                     
                     manutencoes.forEach(item => {
                         const equipamento = equipamentos.find(e => e.patrimonio === item.equipamentoId) || {};
@@ -1973,7 +2008,7 @@ h3::after {
                     break;
                     
                 case 'warranty':
-                    headers = ["Patrimônio", "Categoria", "Marca", "Modelo", "Localização", "Status", "Garantia até"];
+                    headers = ["PATRIMÔNIO", "CATEGORIA", "MARCA", "MODELO", "LOCALIZAÇÃO", "STATUS", "GARANTIA ATÉ"];
                     
                     equipamentos.forEach(item => {
                         if ((!category || item.categoria === category) && item.garantia && new Date(item.garantia) > new Date()) {
@@ -1992,7 +2027,7 @@ h3::after {
             }
             
             if (data.length === 0) {
-                alert("Nenhum dado encontrado para os filtros selecionados.");
+                alert("NENHUM DADO ENCONTRADO PARA OS FILTROS SELECIONADOS.");
                 return;
             }
             
@@ -2051,7 +2086,7 @@ h3::after {
                 Array.from(selectAparelho.options).forEach(option => {
                     if (option.value && disponibilidade[option.value] <= 0) {
                         option.disabled = true;
-                        option.textContent += ' (Indisponível)';
+                        option.textContent += ' (INDISPONÍVEL)';
                     }
                 });
             }
@@ -2079,7 +2114,7 @@ h3::after {
             atualizarDisponibilidadeEquipamentos();
             
             if (contador < quantidade) {
-                console.warn(`Não há equipamentos suficientes disponíveis. Solicitados: ${quantidade}, Disponíveis: ${contador}`);
+                console.warn(`NÃO HÁ EQUIPAMENTOS SUFICIENTES DISPONÍVEIS. SOLICITADOS: ${quantidade}, DISPONÍVEIS: ${contador}`);
             }
         }
         
@@ -2105,7 +2140,7 @@ h3::after {
             atualizarDisponibilidadeEquipamentos();
             
             if (contador < quantidade) {
-                console.warn(`Não foi possível registrar a devolução de todos os equipamentos. Esperados: ${quantidade}, Registrados: ${contador}`);
+                console.warn(`NÃO FOI POSSÍVEL REGISTRAR A DEVOLUÇÃO DE TODOS OS EQUIPAMENTOS. ESPERADOS: ${quantidade}, REGISTRADOS: ${contador}`);
             }
         }
         
@@ -2127,7 +2162,7 @@ h3::after {
             ).length;
             
             if (disponiveis < numAparelhos) {
-                alert(`Não há equipamentos suficientes disponíveis. Disponíveis: ${disponiveis}, Solicitados: ${numAparelhos}`);
+                alert(`NÃO HÁ EQUIPAMENTOS SUFICIENTES DISPONÍVEIS. DISPONÍVEIS: ${disponiveis}, SOLICITADOS: ${numAparelhos}`);
                 return;
             }
             
@@ -2163,12 +2198,26 @@ h3::after {
                 manutencoes = JSON.parse(localStorage.getItem(MAINTENANCE_STORAGE_KEY));
             }
             
+            // Verifica se o usuário já está logado
+            if (localStorage.getItem('admin_logged_in') === 'true') {
+                isAdminLoggedIn = true;
+                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('adminArea').style.display = 'block';
+                loadEquipmentList();
+                loadMaintenanceList();
+                
+                // Carrega a identificação do aparelho se existir
+                const deviceId = localStorage.getItem(DEVICE_ID_KEY);
+                if (deviceId) {
+                    document.getElementById('deviceIdentification').value = deviceId;
+                }
+            } else {
+                document.getElementById('adminLogin').style.display = 'block';
+                document.getElementById('adminArea').style.display = 'none';
+            }
+            
             // Atualiza disponibilidade de equipamentos para agendamento
             atualizarDisponibilidadeEquipamentos();
-            
-            // Configura a área administrativa como oculta inicialmente
-            document.getElementById('adminArea').style.display = 'none';
-            document.getElementById('adminLogin').style.display = 'block';
         });
     </script>
 </body>
