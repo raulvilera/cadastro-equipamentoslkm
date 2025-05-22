@@ -705,15 +705,8 @@ h3::after {
 </style>
 </head>
 <body>
-    <!-- Manter todo o conteúdo existente -->
-    <!-- Adicionar o botão para acessar a área administrativa -->
-    <div style="text-align: right; margin-bottom: 10px;">
-        <button class="btn btn-cadastrar" onclick="toggleAdminArea()">ÁREA ADMINISTRATIVA</button>
-        <button class="btn btn-sair" onclick="sairDoSistema()">SAIR DO SISTEMA</button>
-    </div>
-
-    <!-- Área de login administrativo (inicialmente visível) -->
-    <div id="adminLogin" class="login-container">
+    <!-- Tela de Login (inicialmente visível) -->
+    <div id="loginScreen" class="login-container">
         <h3>ACESSO ADMINISTRATIVO</h3>
         <div class="form-group">
             <label for="adminEmail">E-MAIL INSTITUCIONAL:</label>
@@ -731,7 +724,11 @@ h3::after {
     </div>
 
     <!-- Área administrativa (inicialmente oculta) -->
-    <div id="adminArea" class="admin-container">
+    <div id="adminArea" class="admin-container" style="display: none;">
+        <div style="text-align: right; margin-bottom: 10px;">
+            <button class="btn btn-sair" onclick="sairDoSistema()">SAIR DO SISTEMA</button>
+        </div>
+
         <div class="admin-tabs">
             <div class="admin-tab active" onclick="openAdminTab('equipment-management')">GERENCIAR EQUIPAMENTOS</div>
             <div class="admin-tab" onclick="openAdminTab('maintenance')">MANUTENÇÃO/GARANTIA</div>
@@ -1049,6 +1046,7 @@ h3::after {
         const EQUIPMENT_STORAGE_KEY = 'equipamentos_escola';
         const MAINTENANCE_STORAGE_KEY = 'manutencoes_equipamentos';
         const DEVICE_ID_KEY = 'device_identification';
+        const LOGIN_STATUS_KEY = 'admin_logged_in';
         
         // Carrega equipamentos do localStorage ou inicializa vazio
         let equipamentos = JSON.parse(localStorage.getItem(EQUIPMENT_STORAGE_KEY)) || [];
@@ -1065,28 +1063,14 @@ h3::after {
             localStorage.setItem(MAINTENANCE_STORAGE_KEY, JSON.stringify(manutencoes));
         }
         
-        // Função para alternar a área administrativa
-        function toggleAdminArea() {
-            if (!isAdminLoggedIn) {
-                document.getElementById('adminLogin').style.display = 'block';
-                document.getElementById('adminArea').style.display = 'none';
-            } else {
-                document.getElementById('adminLogin').style.display = 'none';
-                document.getElementById('adminArea').style.display = 'block';
-                loadEquipmentList();
-                loadMaintenanceList();
-            }
-        }
-        
         // Função para sair do sistema
         function sairDoSistema() {
             isAdminLoggedIn = false;
-            localStorage.removeItem('admin_logged_in');
-            document.getElementById('adminLogin').style.display = 'block';
+            localStorage.removeItem(LOGIN_STATUS_KEY);
+            document.getElementById('loginScreen').style.display = 'block';
             document.getElementById('adminArea').style.display = 'none';
             document.getElementById('adminEmail').value = '';
             document.getElementById('adminPassword').value = '';
-            document.getElementById('deviceIdentification').value = '';
             alert('VOCÊ SAIU DO SISTEMA COM SUCESSO!');
         }
         
@@ -1103,9 +1087,9 @@ h3::after {
             
             if (email.endsWith('@prof.educacao.sp.gov.br') && password === 'Proati@Lydia') {
                 isAdminLoggedIn = true;
-                localStorage.setItem('admin_logged_in', 'true');
+                localStorage.setItem(LOGIN_STATUS_KEY, 'true');
                 localStorage.setItem(DEVICE_ID_KEY, deviceId);
-                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('adminArea').style.display = 'block';
                 loadEquipmentList();
                 loadMaintenanceList();
@@ -2199,9 +2183,9 @@ h3::after {
             }
             
             // Verifica se o usuário já está logado
-            if (localStorage.getItem('admin_logged_in') === 'true') {
+            if (localStorage.getItem(LOGIN_STATUS_KEY) === 'true') {
                 isAdminLoggedIn = true;
-                document.getElementById('adminLogin').style.display = 'none';
+                document.getElementById('loginScreen').style.display = 'none';
                 document.getElementById('adminArea').style.display = 'block';
                 loadEquipmentList();
                 loadMaintenanceList();
@@ -2212,7 +2196,7 @@ h3::after {
                     document.getElementById('deviceIdentification').value = deviceId;
                 }
             } else {
-                document.getElementById('adminLogin').style.display = 'block';
+                document.getElementById('loginScreen').style.display = 'block';
                 document.getElementById('adminArea').style.display = 'none';
             }
             
