@@ -1247,6 +1247,14 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/js/all.min.js"></script>
     <script>
+        // Função no sistema de CADASTRO
+async function cadastrarProfessorFirestore(nome, email) {
+  await db.collection("professores").doc(nome).set({ email });
+}
+        // Função no sistema de CADASTRO
+async function cadastrarEquipamentoFirestore(tipo, marca) {
+  await db.collection("equipamentos").doc(tipo).set({ marca });
+}
         // Configuração do Firebase
         const firebaseConfig = {
             apiKey: "AIzaSyBOoXyjLQPfgzQM06LVy-TRSPdSM_8CjcE",
